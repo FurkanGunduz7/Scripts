@@ -1,6 +1,5 @@
 #! /bin/bash
 
-
 echo -n "directory path> "
 read dir
 
@@ -8,13 +7,11 @@ echo "Total size of disk"
 sudo du -sh $dir
 
 echo "Disk's device path"
-
 cd $dir
 pwd
 
 echo "Mounted on"
 df -P $dir | tail -1 | cut -d'%' -f 2
-
 
 echo "Partition's size"
 cd $dir
