@@ -1,0 +1,51 @@
+#! /bin/bash
+
+
+# Disk toplam boyutu
+sudo du -sh /dev/disk
+
+# Disk's device path
+
+cd /dev/disk
+pwd /dev/disk
+
+# Mounted on
+df -P /dev/disk | tail -1 | cut -d'/' -f 2
+
+# Partition's size
+cd /dev/disk
+du -h /dev/disk
+
+# Usage
+cd /dev/disk
+du -ah /dev/disk
+
+# Number of directories
+cd /dev/disk
+ls -l | grep ^d | wc -l
+
+# Number of files
+cd /dev/disk
+find /dev/disk -type f | wc -l
+
+# find file with longest filename
+echo -n "dir> "
+read dir
+longestname=0
+
+for file in $dir/*; do
+    file=`echo $file | sed s,$dir/,,`
+    sz=`echo $file | wc -c`             # get filename length
+    if [ $sz -gt $longestname ]; then
+        longestname=`expr $sz - 1`      # reduce by 1 for carriage return
+        longname=$file
+    fi
+done
+
+echo $longestname:  $longname
+
+cd /dev/disk
+find /dev/disk -perm -4000 -print
+find /dev/disk -perm -1000 -print
+
+exit
