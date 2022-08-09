@@ -1,0 +1,15 @@
+Script görevleri:
+
+***İstatistik script'i***
+
+-Diskin toplam boyutu
+-Diskteki partitionların:
+	|-> Device Path
+	|-> Mount edildiği yer
+	|-> Boyutu
+	|-> Kullanım miktarı
+	|-> Dizin sayısı
+	|-> Dosya sayısı
+	|-> İsmi en uzun dosya
+	|-> Suid biti set edilmiş dosya
+	|-> Sticky biti set edilmiş dosya

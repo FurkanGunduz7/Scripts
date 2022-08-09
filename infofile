@@ -2,31 +2,33 @@
 
 
 # Disk toplam boyutu
-sudo du -sh /dev/disk
+echo -n "dir> "
+read dir
+
+sudo du -sh $dir/,,
 
 # Disk's device path
 
-cd /dev/disk
-pwd /dev/disk
+cd $dir/,,
+pwd
 
 # Mounted on
-df -P /dev/disk | tail -1 | cut -d'/' -f 2
+df -P $dir/,, | tail -1 | cut -d'/' -f 2
 
 # Partition's size
-cd /dev/disk
-du -h /dev/disk
+cd $dir/,,
+du -h $dir/,,
 
 # Usage
-cd /dev/disk
-du -ah /dev/disk
+cd $dir/,,
+du -ah $dir/,,
 
 # Number of directories
-cd /dev/disk
+cd $dir/,,
 ls -l | grep ^d | wc -l
 
 # Number of files
-cd /dev/disk
-find /dev/disk -type f | wc -l
+find $dir/,, -type f | wc -l
 
 # find file with longest filename
 echo -n "dir> "
@@ -44,8 +46,8 @@ done
 
 echo $longestname:  $longname
 
-cd /dev/disk
-find /dev/disk -perm -4000 -print
-find /dev/disk -perm -1000 -print
+# find files setted suid & sticky
+find $dir/,, -perm -4000 -print
+find $dir/,, -perm -1000 -print
 
 exit
