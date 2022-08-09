@@ -1,7 +1,6 @@
 #! /bin/bash
 
 
-# Disk toplam boyutu
 echo -n "directory path> "
 read dir
 
