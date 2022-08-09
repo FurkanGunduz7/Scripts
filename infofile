@@ -2,37 +2,38 @@
 
 
 # Disk toplam boyutu
-echo -n "dir> "
+echo -n "directory path> "
 read dir
 
-sudo du -sh $dir/,,
+echo "Total size of disk"
+sudo du -sh $dir
 
-# Disk's device path
+echo "Disk's device path"
 
-cd $dir/,,
+cd $dir
 pwd
 
-# Mounted on
-df -P $dir/,, | tail -1 | cut -d'/' -f 2
+echo "Mounted on"
+df -P $dir | tail -1 | cut -d'%' -f 2
 
-# Partition's size
-cd $dir/,,
-du -h $dir/,,
 
-# Usage
-cd $dir/,,
-du -ah $dir/,,
+echo "Partition's size"
+cd $dir
+du -h $dir
 
-# Number of directories
-cd $dir/,,
+echo "Usage"
+cd $dir
+df -h $dir
+
+echo "Number of directories"
+cd $dir
 ls -l | grep ^d | wc -l
 
-# Number of files
-find $dir/,, -type f | wc -l
+echo "Number of files"
+find $dir -type f | wc -l
 
 # find file with longest filename
-echo -n "dir> "
-read dir
+
 longestname=0
 
 for file in $dir/*; do
@@ -46,8 +47,8 @@ done
 
 echo $longestname:  $longname
 
-# find files setted suid & sticky
-find $dir/,, -perm -4000 -print
-find $dir/,, -perm -1000 -print
+echo "Files suid or sticky setted:"
+find $dir -perm -4000 -print
+find $dir -perm -1000 -print
 
 exit
